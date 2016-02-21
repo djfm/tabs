@@ -1,7 +1,7 @@
 import chai from 'chai';
 chai.should();
 
-import {extractSections, parseSong} from '../lib/tabParser';
+import {extractSections, parseSong, parseSectionBody} from '../lib/tabParser';
 
 /* global describe, it */
 describe("The tab parser", function () {
@@ -35,5 +35,27 @@ describe("The tab parser", function () {
             Title: "Hello World",
             Author: "Bob Bobby"
         });
+    });
+
+    it("should parse a section body with no markers", function () {
+        parseSectionBody("hello world").should.deep.equal([
+            {type: "text", body: "hello world"}
+        ]);
+    });
+
+    it("should parse a section body with no markers and multiple lines", function () {
+        parseSectionBody("hello world\nI'm a new line").should.deep.equal([
+            {type: "text", body: "hello world"},
+            {type: "text", body: "I'm a new line"}
+        ]);
+    });
+
+    it("should parse a section body with a marker", function () {
+        parseSectionBody("hello [C] world").should.deep.equal([
+            {type: "tab", body: [
+                {marker: "", body: "hello"},
+                {marker: "C", body: "world"}
+            ]}
+        ]);
     });
 });
