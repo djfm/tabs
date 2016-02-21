@@ -1,0 +1,9 @@
+@import "../../../variables.scss";
+
+.song-section {
+    margin-bottom: $small-space;
+    .name {
+        margin-right: $small-space;
+        font-weight: bold;
+    }
+}

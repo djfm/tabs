@@ -1,6 +1,9 @@
 import deepFreeze from 'deep-freeze';
+import _ from 'underscore';
+
 const initialState = {
-    songs: []
+    songs: [],
+    songsById: {}
 };
 
 export function songRepository (state = initialState, action) {
@@ -8,7 +11,8 @@ export function songRepository (state = initialState, action) {
 
     if (action.type === "SET_SONGS") {
         return Object.assign({}, state, {
-            songs: action.data.songs
+            songs: action.data.songs,
+            songsById: _.indexBy(action.data.songs, 'id')
         });
     }
 
