@@ -1,7 +1,7 @@
 import chai from 'chai';
 chai.should();
 
-import {extractSections} from '../lib/tabParser';
+import {extractSections, parseSong} from '../lib/tabParser';
 
 /* global describe, it */
 describe("The tab parser", function () {
@@ -25,5 +25,15 @@ describe("The tab parser", function () {
             {type: "reference", name: "stuffz", title: "", body: ""},
             {type: "definition", name: "Chorus", title: "", body: "[A] la la la la la"},
         ]);
+    });
+
+    it("should produce song objects with meta information", function () {
+        parseSong(`
+            Title: Hello World
+            Author: Bob Bobby
+        `).should.include({
+            Title: "Hello World",
+            Author: "Bob Bobby"
+        });
     });
 });
