@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import { Router, Route, browserHistory } from "react-router";
+import { Router, Route, IndexRoute, browserHistory } from "react-router";
 import { syncHistory, routeReducer } from "react-router-redux";
 import * as reducers from "./reducers";
 
@@ -21,13 +21,16 @@ reduxRouterMiddleware.listenForReplays(store);
 
 import Layout from "./components/Layout";
 import SongList from "./components/SongList";
+import Song from "./components/Song";
 import "./main.scss";
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={Layout}>
+                <IndexRoute component={SongList}/>
                 <Route path="songs" component={SongList}/>
+                <Route path="songs/:songId" component={Song}/>
             </Route>
         </Router>
     </Provider>,

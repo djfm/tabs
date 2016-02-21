@@ -42,6 +42,10 @@ module.exports = [{
             {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap!sass?sourceMap")
+            },
+            {
+                test: /\.(eot|woff2?|ttf)$/,
+                loader: 'file'
             }
         ]
     },
