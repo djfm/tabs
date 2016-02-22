@@ -40,4 +40,27 @@ ReactDOM.render(
 import {setSongs} from "./actions";
 import {get} from "axios";
 
-get("/api/songs").then(({data}) => store.dispatch(setSongs({songs: data})));
+/* global localStorage */
+
+get("/api/songs")
+  .then(
+    // Try to access the real server
+    ({data}) => {
+      const songs = {songs: data};
+      localStorage.setItem('songs', JSON.stringify(songs));
+      store.dispatch(setSongs(songs));
+    }
+  )
+  .catch(
+    // If unavailable, then check localStorage
+    () => {
+      const songs = localStorage.getItem('songs');
+      if (songs) {
+        store.dispatch(setSongs(JSON.parse(songs)));
+      }
+    }
+  )
+;
+
+import registerServiceWorker from './src/serviceWorker';
+registerServiceWorker();

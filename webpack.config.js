@@ -8,6 +8,8 @@ var jsLoader = {
     loader: 'babel'
 };
 
+var publicPath = path.join(__dirname, "build", "public");
+var privatePath = path.join(__dirname, "build");
 
 module.exports = [{
     entry: "./server.js",
@@ -17,7 +19,7 @@ module.exports = [{
         __dirname: true
     },
     output: {
-        "path": path.join(__dirname, "build"),
+        "path": privatePath,
         filename: "server.js"
     },
     externals: {
@@ -33,7 +35,7 @@ module.exports = [{
     entry: "./client.jsx",
     target: "web",
     output: {
-        "path": path.join(__dirname, "build", "public"),
+        "path": publicPath,
         filename: "bundle.js"
     },
     module: {
@@ -52,6 +54,22 @@ module.exports = [{
     plugins: [
         new ExtractTextPlugin("bundle.css")
     ],
+    resolve: {
+        extensions: [".js", ".jsx", ""]
+    },
+    devtool: "sourcemap"
+},{
+    entry: "./serviceWorker.js",
+    target: "web",
+    output: {
+        "path": publicPath,
+        filename: "serviceWorker.js"
+    },
+    module: {
+        loaders: [
+            jsLoader
+        ]
+    },
     resolve: {
         extensions: [".js", ".jsx", ""]
     },
