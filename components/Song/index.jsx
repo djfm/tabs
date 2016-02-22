@@ -4,7 +4,9 @@ import Section from './Section';
 
 const Song = ({song}) => <div className="song-view">
     {song ?
-        song.sections.map((section, key) => <Section key={key} section={section}/>) :
+        song.sections.map((section, key) =>
+            <Section key={key} section={section} markerSizeHint={song.markerSizeHint}/>
+        ) :
         'Please wait while your song is loading...'
     }
 </div>;

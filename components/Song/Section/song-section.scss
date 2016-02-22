@@ -1,19 +1,21 @@
 @import "../../../variables.scss";
 
 .song-section {
-    margin-bottom: $small-space;
+    margin-bottom: 2*$small-space;
     .name {
         margin-right: $small-space;
         font-weight: bold;
     }
     .line {
         display: flex;
-        align-items: flex-end;
-
+        margin-bottom: $small-space;
         .marker {
             margin-right: $small-space;
             border-left: 1px solid $gray-light;
             padding-left: $small-space/2;
+            .chord {
+                font-style: italic;
+            }
         }
     }
 }
