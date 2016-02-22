@@ -40,4 +40,25 @@ ReactDOM.render(
 import {setSongs} from "./actions";
 import {get} from "axios";
 
-get("/api/songs").then(({data}) => store.dispatch(setSongs({songs: data})));
+get("/api/songs")
+  .then(
+    ({data}) => {
+      console.log("yeah");
+      const songs = {songs: data};
+      localStorage.setItem('songs', JSON.stringify(songs));
+      store.dispatch(setSongs(songs));
+    }
+  )
+  .catch(
+    err => {
+      console.log("Noooo!!!!", err);
+      const songs = localStorage.getItem('songs');
+      if (songs) {
+        store.dispatch(setSongs(JSON.parse(songs)));
+      }
+    }
+  )
+;
+
+import registerServiceWorker from './src/serviceWorker';
+registerServiceWorker();

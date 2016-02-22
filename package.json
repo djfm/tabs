@@ -10,7 +10,8 @@
     "tdd": "mocha -w --compilers js:babel-register",
     "build": "webpack",
     "watch": "webpack -w",
-    "dev": "npm run tdd & npm run watch & nodemon -w build/server.js build/server.js"
+    "serve": "nodemon -w build/server.js build/server.js",
+    "dev": "npm run tdd & npm run watch & npm serve"
   },
   "author": "",
   "license": "ISC",
