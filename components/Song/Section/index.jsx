@@ -6,7 +6,7 @@ const renderTabBody = ({markerSizeHint}) => (parts, lineKey) =>
         {parts.map(({marker, body}, key) =>
             <div key={key} className="marker" style={{width: markerSizeHint + "px"}}>
                 <div className="chord">{marker || "\u00a0"}</div>
-                <div>{body}</div>
+                <div className="lyrics">{body}</div>
             </div>
         )}
     </div>

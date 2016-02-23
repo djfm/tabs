@@ -1,9 +1,10 @@
 @import "../../../variables.scss";
 
 .song-section {
-    margin-bottom: 2*$spacer;
+    margin-bottom: $spacer;
     .name {
         margin-right: $spacer;
+        margin-bottom: $spacer;
         font-weight: bold;
     }
     .body {
@@ -13,14 +14,16 @@
             display: flex;
             margin-bottom: $spacer;
             margin-right: $spacer;
-            border: 1px solid $gray-lighter;
+            border: 1px solid black;
             padding: $spacer;
+            background-color: $light-bg-color;
             .marker {
-                margin-right: $spacer;
-                border-left: 1px solid $gray-light;
-                padding-left: $spacer/2;
                 .chord {
                     font-style: italic;
+                }
+                .lyrics {
+                    font-size: 1.2rem;
+                    color: black;
                 }
             }
         }
