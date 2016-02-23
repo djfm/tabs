@@ -14,7 +14,7 @@ const renderTabBody = ({markerSizeHint}) => (parts, lineKey) =>
 
 const renderBody = options => (block, key) =>
     block.type === "text" ?
-        <div>{block.body}</div> :
+        <div key={key}>{block.body}</div> :
         renderTabBody(options)(block.body, key)
 ;
 
