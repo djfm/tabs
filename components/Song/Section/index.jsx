@@ -1,8 +1,8 @@
 import React from 'react';
 import './song-section.scss';
 
-const renderTabBody = ({markerSizeHint}) => parts =>
-    <div className="line">
+const renderTabBody = ({markerSizeHint}) => (parts, lineKey) =>
+    <div className="line" key={lineKey}>
         {parts.map(({marker, body}, key) =>
             <div key={key} className="marker" style={{width: markerSizeHint + "px"}}>
                 <div className="chord">{marker || "\u00a0"}</div>
@@ -13,13 +13,9 @@ const renderTabBody = ({markerSizeHint}) => parts =>
 ;
 
 const renderBody = options => (block, key) =>
-    <div key={key}>
-        {
-            block.type === "text" ?
-                block.body :
-                renderTabBody(options)(block.body)
-        }
-    </div>
+    block.type === "text" ?
+        <div>{block.body}</div> :
+        renderTabBody(options)(block.body, key)
 ;
 
 const Section = ({section: {name, title, parsedBody}, markerSizeHint}) =>

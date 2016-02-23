@@ -1,20 +1,27 @@
 @import "../../../variables.scss";
 
 .song-section {
-    margin-bottom: 2*$small-space;
+    margin-bottom: 2*$spacer;
     .name {
-        margin-right: $small-space;
+        margin-right: $spacer;
         font-weight: bold;
     }
-    .line {
+    .body {
         display: flex;
-        margin-bottom: $small-space;
-        .marker {
-            margin-right: $small-space;
-            border-left: 1px solid $gray-light;
-            padding-left: $small-space/2;
-            .chord {
-                font-style: italic;
+        flex-wrap: wrap;
+        .line {
+            display: flex;
+            margin-bottom: $spacer;
+            margin-right: $spacer;
+            border: 1px solid $gray-lighter;
+            padding: $spacer;
+            .marker {
+                margin-right: $spacer;
+                border-left: 1px solid $gray-light;
+                padding-left: $spacer/2;
+                .chord {
+                    font-style: italic;
+                }
             }
         }
     }
