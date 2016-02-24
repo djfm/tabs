@@ -16,5 +16,10 @@ export function songRepository (state = initialState, action) {
         });
     }
 
+    if (action.type === "TRANSPOSE_SONG") {
+        console.log(action);
+        console.log(state);
+    }
+
     return state;
 }
