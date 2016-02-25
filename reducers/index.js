@@ -3,7 +3,8 @@ import _ from 'underscore';
 
 const initialState = {
     songs: [],
-    songsById: {}
+    songsById: {},
+    transposeBy: 0
 };
 
 export function songRepository (state = initialState, action) {
@@ -17,8 +18,9 @@ export function songRepository (state = initialState, action) {
     }
 
     if (action.type === "TRANSPOSE_SONG") {
-        console.log(action);
-        console.log(state);
+        return Object.assign({}, state, {
+            transposeBy: action.semitones
+        });
     }
 
     return state;

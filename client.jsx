@@ -10,8 +10,16 @@ const reducer = combineReducers(Object.assign({}, reducers, {
   routing: routeReducer
 }));
 
+import urlSyncMiddleWare from './lib/urlSyncMiddleWare';
+const urlSyncConfig = {
+    "songRepository.transposeBy": "transposeBy"
+};
+
 const reduxRouterMiddleware = syncHistory(browserHistory);
-const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware)(createStore);
+const createStoreWithMiddleware = applyMiddleware(
+    reduxRouterMiddleware,
+    urlSyncMiddleWare(urlSyncConfig)
+)(createStore);
 
 const store = createStoreWithMiddleware(reducer);
 reduxRouterMiddleware.listenForReplays(store);

@@ -7,7 +7,7 @@ import {transpose} from '../../actions';
 
 const songBody = ({song, transpose}) => <div>
     <div>
-        <Transposer transpose={transpose(song.id)}/>
+        <Transposer transpose={transpose}/>
     </div>
     {song.sections.map((section, key) =>
         <Section key={key} section={section} markerSizeHint={song.markerSizeHint}/>
