@@ -4,10 +4,10 @@
   "description": "",
   "main": "build/server.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register -r babel-polyfill",
     "postinstall": "npm run build",
     "start": "node build/server.js",
-    "tdd": "mocha -w --compilers js:babel-register",
+    "tdd": "mocha -w --compilers js:babel-register -r babel-polyfill",
     "build": "webpack",
     "watch": "webpack -w",
     "serve": "nodemon -w build/server.js build/server.js",
